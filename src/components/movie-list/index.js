@@ -4,6 +4,7 @@ import "./index.css";
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
+  const [searchPerformed, setSearchPerfomed] = useState(false);
   const inputElement = useRef();
 
   const Search = () => {
@@ -47,7 +48,12 @@ function MovieList() {
         <li className="slide-up-fade-in py-10"></li>
       </ul>
 
-      <div className="mt-50 slide-up-fade-in" data-testid="no-result"></div>
+      <div className="mt-50 slide-up-fade-in" data-testid="no-result">
+          {!searchPerformed &&
+          <p>No movies found</p>
+          }
+
+      </div>
     </div>
   );
 }
