@@ -3,7 +3,7 @@ import "./index.css";
 //import { Formik } from 'formik'; //not necessary as input box is actually a number so some validation occurs.
 
 function MovieList() {
-  const [movies, setMovies] = useState({});
+  const [movies, setMovies] = useState([]);
   const inputElement = useRef();
 
   const Search = () => {
@@ -19,9 +19,6 @@ function MovieList() {
        });
       var jsonResult = await response.json();
       setMovies(jsonResult.data);
-      //console.log()
-      //alert(JSON.stringify(jsonResult.data));
-      alert(JSON.stringify(movies));
       
   } catch (ex) {console.error(ex);}
 
@@ -38,6 +35,16 @@ function MovieList() {
       </section>
 
       <ul className="mt-50 styled" data-testid="movieList">
+         {movies.map(function (data, index) {
+                        return (
+                          <li key={index} className="slide-up-fade-in py-10">
+                                <p > {JSON.stringify(data)} </p>
+                                data.Title
+                                </li>
+                        );
+                    }) 
+          }
+
         <li className="slide-up-fade-in py-10"></li>
       </ul>
 
