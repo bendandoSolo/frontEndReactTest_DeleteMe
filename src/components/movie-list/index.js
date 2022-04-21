@@ -1,9 +1,9 @@
-import React, {useRef}  from "react";
+import React, {useRef,useState}  from "react";
 import "./index.css";
-import { Formik } from 'formik'; //not necessary as input box is actually a number so some validation occurs.
+//import { Formik } from 'formik'; //not necessary as input box is actually a number so some validation occurs.
 
 function MovieList() {
-  
+  const [movies, setMovies] = useState({});
   const inputElement = useRef();
 
   const Search = () => {
@@ -18,7 +18,11 @@ function MovieList() {
           method: 'GET',
        });
       var jsonResult = await response.json();
-      alert(JSON.stringify(jsonResult.data));
+      setMovies(jsonResult.data);
+      //console.log()
+      //alert(JSON.stringify(jsonResult.data));
+      alert(JSON.stringify(movies));
+      
   } catch (ex) {console.error(ex);}
 
   }
