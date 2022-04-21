@@ -7,9 +7,22 @@ function MovieList() {
   const inputElement = useRef();
 
   const Search = () => {
-    let year = inputElement.current.value;
-    alert(year);
+    fetchData(inputElement.current.value);
   }
+
+  //should refcator to services
+  const fetchData = async (year) => {
+    //start with test values 2015 and 2016
+    try {
+      var response = await fetch('https://jsonmock.hackerrank.com/api/moviesdata?Year='+year, {
+          method: 'GET',
+       });
+      var jsonResult = await response.json();
+      alert(JSON.stringify(jsonResult.data));
+  } catch (ex) {console.error(ex);}
+
+  }
+
 
 
 
