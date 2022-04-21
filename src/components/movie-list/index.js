@@ -38,8 +38,7 @@ function MovieList() {
          {movies.map(function (data, index) {
                         return (
                           <li key={index} className="slide-up-fade-in py-10">
-                                <p > {JSON.stringify(data)} </p>
-                                data.Title
+                                {JSON.stringify(data.Title)}
                                 </li>
                         );
                     }) 
